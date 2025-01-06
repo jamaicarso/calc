@@ -1,34 +1,81 @@
-// Получаем все строки таблицы с услугами
-const priceList = document.querySelectorAll("#price-list tbody tr");
-
-// Функция для пересчета итоговой стоимости
-function updateTotalPrice() {
-  let totalCost = 0;
-
-  // Перебираем все строки в таблице
-  priceList.forEach(row => {
-    const price = parseFloat(row.getAttribute("data-price")); // Получаем цену услуги
-    const quantity = parseInt(row.querySelector(".quantity").value); // Получаем количество
-
-    // Рассчитываем итоговую стоимость для текущей строки
-    const rowTotalPrice = price * quantity;
-
-    // Обновляем итоговую стоимость в таблице
-    row.querySelector(".total-price").textContent = rowTotalPrice.toFixed(2);
-
-    // Добавляем эту стоимость в общую
-    totalCost += rowTotalPrice;
-  });
-
-  // Обновляем отображение общей стоимости на странице
-  document.getElementById("total-cost").textContent = totalCost.toFixed(2);
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  padding: 0;
+  background-color: #f4f4f9;
 }
 
-// Слушаем изменения в полях для количества
-priceList.forEach(row => {
-  const quantityField = row.querySelector(".quantity");
-  quantityField.addEventListener("input", updateTotalPrice);
-});
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
 
-// Инициализация при загрузке страницы
-updateTotalPrice();
+h1 {
+  text-align: center;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.tab-button:hover {
+  background-color: #ddd;
+}
+
+.tab-button.active {
+  background-color: #ccc;
+}
+
+.tab-content {
+  display: none;
+}
+
+#fire-tab {
+  display: block;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+td:first-child {
+  text-align: left; /* Выравнивание первой колонки по левому краю */
+}
+
+input {
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.result {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.5em;
+}
+
+input[type="number"] {
+  text-align: center;
+}
