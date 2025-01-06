@@ -8,193 +8,77 @@
 </head>
 <body>
   <div class="container">
-    <h1>Калькулятор стоимости монтажа пожарной сигнализации и видеонаблюдения</h1>
-    <table id="price-list">
-      <thead>
-        <tr>
-          <th>Услуга</th>
-          <th>Цена за единицу (руб.)</th>
-          <th>Количество</th>
-          <th>Итоговая стоимость (руб.)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Существующие услуги -->
-        <tr data-price="500">
-          <td>Монтаж датчика дыма</td>
-          <td><input type="number" class="unit-price" value="500" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="1500">
-          <td>Монтаж панели управления</td>
-          <td><input type="number" class="unit-price" value="1500" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="200">
-          <td>Монтаж шлейфов</td>
-          <td><input type="number" class="unit-price" value="200" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <!-- Новые услуги -->
-        <tr data-price="2500">
-          <td>Монтаж видеокамеры (высота до 3 м)</td>
-          <td><input type="number" class="unit-price" value="2500" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="3500">
-          <td>Монтаж видеокамеры (высота более 3 м)</td>
-          <td><input type="number" class="unit-price" value="3500" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="3500">
-          <td>Монтаж поворотной видеокамеры (на высоте до 3 м)</td>
-          <td><input type="number" class="unit-price" value="3500" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="4500">
-          <td>Монтаж поворотной видеокамеры (на высоте более 3 м)</td>
-          <td><input type="number" class="unit-price" value="4500" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="1000">
-          <td>Монтаж и настройка видеомонитора</td>
-          <td><input type="number" class="unit-price" value="1000" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="500">
-          <td>Монтаж микрофона</td>
-          <td><input type="number" class="unit-price" value="500" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="1500">
-          <td>Монтаж и настройка коммутатора</td>
-          <td><input type="number" class="unit-price" value="1500" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="2000">
-          <td>Монтаж и настройка видеорегистратора</td>
-          <td><input type="number" class="unit-price" value="2000" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="300">
-          <td>Монтаж коммутационной коробки</td>
-          <td><input type="number" class="unit-price" value="300" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="50">
-          <td>Установка тонкого кабель-канала на гипсокартон</td>
-          <td><input type="number" class="unit-price" value="50" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="70">
-          <td>Установка тонкого кабель-канала на бетон, кирпичную стену</td>
-          <td><input type="number" class="unit-price" value="70" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="70">
-          <td>Установка широкого кабель-канала на гипсокартон</td>
-          <td><input type="number" class="unit-price" value="70" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="90">
-          <td>Установка широкого кабель-канала на бетон, кирпичную стену</td>
-          <td><input type="number" class="unit-price" value="90" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="450">
-          <td>Монтаж металлических лотков до 200 мм</td>
-          <td><input type="number" class="unit-price" value="450" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="550">
-          <td>Монтаж металлических лотков до 400 мм</td>
-          <td><input type="number" class="unit-price" value="550" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="40">
-          <td>Монтаж трубы гофрированной легкой по потолку, стене</td>
-          <td><input type="number" class="unit-price" value="40" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="60">
-          <td>Монтаж трубы гофрированной ПНД по потолку, стене, опоре</td>
-          <td><input type="number" class="unit-price" value="60" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="350">
-          <td>Монтаж автоматического выключателя</td>
-          <td><input type="number" class="unit-price" value="350" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="50">
-          <td>Прокладка силового кабеля</td>
-          <td><input type="number" class="unit-price" value="50" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="75">
-          <td>Прокладка силового кабеля за подвесным потолком</td>
-          <td><input type="number" class="unit-price" value="75" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="650">
-          <td>Сверление проходных отверстий до 1000 мм (до d=20мм)</td>
-          <td><input type="number" class="unit-price" value="650" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="500">
-          <td>Монтаж и настройка видеоусилителя</td>
-          <td><input type="number" class="unit-price" value="500" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="2000">
-          <td>Монтаж навесного электрошкафа</td>
-          <td><input type="number" class="unit-price" value="2000" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="50">
-          <td>Прокладка кабеля UTP</td>
-          <td><input type="number" class="unit-price" value="50" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-        <tr data-price="500">
-          <td>Монтаж блока бесперебойного питания</td>
-          <td><input type="number" class="unit-price" value="500" /></td>
-          <td><input type="number" class="quantity" value="0" /></td>
-          <td class="total-price">0</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="total">
-      <h2>Общая стоимость: <span id="total-cost">0</span> руб.</h2>
+    <h1>Калькулятор стоимости монтажа сигнализации</h1>
+
+    <!-- Вкладки для переключения между таблицами -->
+    <div class="tabs">
+      <button class="tab-button" id="tab-fire" onclick="showTab('fire')">Пожарная сигнализация</button>
+      <button class="tab-button" id="tab-security" onclick="showTab('security')">Охранная сигнализация</button>
+    </div>
+
+    <!-- Таблица для пожарной сигнализации -->
+    <div id="fire-tab" class="tab-content">
+      <table id="price-list-fire">
+        <thead>
+          <tr>
+            <th>Услуга</th>
+            <th>Цена за единицу (руб.)</th>
+            <th>Количество</th>
+            <th>Итоговая стоимость (руб.)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Пример услуг для пожарной сигнализации -->
+          <tr data-price="500">
+            <td>Монтаж датчика дыма</td>
+            <td><input type="number" class="unit-price" value="500" /></td>
+            <td><input type="number" class="quantity" value="0" /></td>
+            <td class="total-price">0</td>
+          </tr>
+          <tr data-price="1500">
+            <td>Монтаж панели управления</td>
+            <td><input type="number" class="unit-price" value="1500" /></td>
+            <td><input type="number" class="quantity" value="0" /></td>
+            <td class="total-price">0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Таблица для охранной сигнализации -->
+    <div id="security-tab" class="tab-content" style="display: none;">
+      <table id="price-list-security">
+        <thead>
+          <tr>
+            <th>Услуга</th>
+            <th>Цена за единицу (руб.)</th>
+            <th>Количество</th>
+            <th>Итоговая стоимость (руб.)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Пример услуг для охранной сигнализации -->
+          <tr data-price="1000">
+            <td>Монтаж датчика движения</td>
+            <td><input type="number" class="unit-price" value="1000" /></td>
+            <td><input type="number" class="quantity" value="0" /></td>
+            <td class="total-price">0</td>
+          </tr>
+          <tr data-price="2000">
+            <td>Монтаж сирены</td>
+            <td><input type="number" class="unit-price" value="2000" /></td>
+            <td><input type="number" class="quantity" value="0" /></td>
+            <td class="total-price">0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="result">
+      <h2>Итоговая стоимость: <span id="total-price">0</span> руб.</h2>
     </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
