@@ -1,38 +1,34 @@
+// Получаем все строки таблицы с услугами
+const priceList = document.querySelectorAll("#price-list tbody tr");
+
 // Функция для пересчета итоговой стоимости
-function calculateTotal() {
-  let totalSum = 0;
-  // Получаем все строки таблицы с услугами
-  const rows = document.querySelectorAll("#price-list tbody tr");
-  
-  rows.forEach(row => {
-    // Получаем цену за единицу из поля ввода
-    const price = parseFloat(row.querySelector(".unit-price").value) || 0;
-    // Получаем количество, введенное пользователем
-    const quantity = parseInt(row.querySelector(".quantity").value) || 0;
+function updateTotalPrice() {
+  let totalCost = 0;
+
+  // Перебираем все строки в таблице
+  priceList.forEach(row => {
+    const price = parseFloat(row.getAttribute("data-price")); // Получаем цену услуги
+    const quantity = parseInt(row.querySelector(".quantity").value); // Получаем количество
+
     // Рассчитываем итоговую стоимость для текущей строки
-    const totalPrice = price * quantity;
-    // Обновляем итоговую стоимость в ячейке
-    row.querySelector(".total-price").textContent = totalPrice;
-    
-    // Добавляем к общей стоимости
-    totalSum += totalPrice;
+    const rowTotalPrice = price * quantity;
+
+    // Обновляем итоговую стоимость в таблице
+    row.querySelector(".total-price").textContent = rowTotalPrice.toFixed(2);
+
+    // Добавляем эту стоимость в общую
+    totalCost += rowTotalPrice;
   });
-  
-  // Обновляем общий итог
-  document.getElementById("total-sum").textContent = totalSum;
+
+  // Обновляем отображение общей стоимости на странице
+  document.getElementById("total-cost").textContent = totalCost.toFixed(2);
 }
 
-// Добавляем обработчик на изменения в полях количества и цены
-const quantityInputs = document.querySelectorAll(".quantity");
-const priceInputs = document.querySelectorAll(".unit-price");
-
-quantityInputs.forEach(input => {
-  input.addEventListener("input", calculateTotal);
+// Слушаем изменения в полях для количества
+priceList.forEach(row => {
+  const quantityField = row.querySelector(".quantity");
+  quantityField.addEventListener("input", updateTotalPrice);
 });
 
-priceInputs.forEach(input => {
-  input.addEventListener("input", calculateTotal);
-});
-
-// Изначальный расчет при загрузке страницы
-calculateTotal();
+// Инициализация при загрузке страницы
+updateTotalPrice();
