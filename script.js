@@ -1,61 +1,79 @@
-// Функция для отображения вкладки
 function showTab(tabName) {
-  const fireTab = document.getElementById("fire-tab");
-  const securityTab = document.getElementById("security-tab");
-  const fireButton = document.getElementById("tab-fire");
-  const securityButton = document.getElementById("tab-security");
+  const tabs = document.querySelectorAll(".tab-content");
+  const buttons = document.querySelectorAll(".tab-button");
 
-  if (tabName === "fire") {
-    fireTab.style.display = "block";
-    securityTab.style.display = "none";
-    fireButton.classList.add("active");
-    securityButton.classList.remove("active");
-  } else if (tabName === "security") {
-    fireTab.style.display = "none";
-    securityTab.style.display = "block";
-    fireButton.classList.remove("active");
-    securityButton.classList.add("active");
-  }
+  tabs.forEach(tab => tab.style.display = "none");
+  buttons.forEach(button => button.classList.remove("active"));
 
-  updateTotalPrice();
+  const activeTab = document.getElementById(tabName + "-tab");
+  const activeButton = document.getElementById("tab-" + tabName);
+
+  activeTab.style.display = "block";
+  activeButton.classList.add("active");
+
+  updateTotalPrice(tabName);
 }
 
-// Функция для обновления итоговой стоимости
-function updateTotalPrice() {
-  const allRows = document.querySelectorAll("tbody tr");
+function updateTotalPrice(tabName) {
+  const rows = document.querySelectorAll(`#${tabName}-tab .unit-price, #${tabName}-tab .quantity`);
   let totalPrice = 0;
 
-  allRows.forEach(row => {
-    const quantity = row.querySelector(".quantity").value;
-    const price = row.querySelector(".unit-price").value;
+  rows.forEach(row => {
+    const quantity = row.closest('tr').querySelector(".quantity").value;
+    const price = row.closest('tr').querySelector(".unit-price").value;
 
     const totalRowPrice = quantity * price;
-    row.querySelector(".total-price").innerText = totalRowPrice;
+    row.closest('tr').querySelector(".total-price").innerText = totalRowPrice;
 
     totalPrice += totalRowPrice;
   });
 
-  document.getElementById("total-price").innerText = totalPrice;
+  document.getElementById("final-total").innerText = totalPrice;
 }
 
-// Функция для добавления обработчиков событий на изменения цены и количества
 function addEventListeners() {
   const unitPriceInputs = document.querySelectorAll(".unit-price");
   const quantityInputs = document.querySelectorAll(".quantity");
 
   unitPriceInputs.forEach(input => {
     input.addEventListener("input", function() {
-      updateTotalPrice(); // Обновляем итоговую стоимость при изменении цены
+      updateTotalPrice('fire'); 
+      updateTotalPrice('security');
+      updateTotalPrice('access');
+      updateTotalPrice('cabling');
     });
   });
 
-  quantityInputs.forEach(input => {
+  quantityInputs.forEach(input => {https://github.com/jamaicarso/calc/blob/main/script.js
     input.addEventListener("input", function() {
-      updateTotalPrice(); // Обновляем итоговую стоимость при изменении количества
+      updateTotalPrice('fire');
+      updateTotalPrice('security');
+      updateTotalPrice('access');
+      updateTotalPrice('cabling');
     });
   });
+
+  // Add event listeners for coefficient and tax inputs
+  const coefficientInput = document.getElementById("coefficient");
+  const taxInput = document.getElementById("tax");
+
+  coefficientInput.addEventListener("input", calculateFinalCost);
+  taxInput.addEventListener("input", calculateFinalCost);
 }
 
-// Инициализация отображения первой вкладки и добавление обработчиков
-showTab("fire");
+function calculateFinalCost() {
+  const coefficient = parseFloat(document.getElementById("coefficient").value);
+  const tax = parseFloat(document.getElementById("tax").value);
+  const total = parseFloat(document.getElementById("final-total").innerText);
+
+  const coefficientResult = total * coefficient;
+  const taxResult = total * (tax / 100);
+  const finalCost = total + coefficientResult + taxResult;
+
+  document.getElementById("coefficient-result").innerText = coefficientResult.toFixed(2);
+  document.getElementById("tax-result").innerText = taxResult.toFixed(2);
+  document.getElementById("final-total").innerText = finalCost.toFixed(2);
+}
+
+showTab('fire');
 addEventListeners();
