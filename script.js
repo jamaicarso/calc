@@ -1,81 +1,46 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  padding: 0;
-  background-color: #f4f4f9;
+// Функция для переключения между вкладками
+function showTab(tab) {
+  // Скрыть все вкладки
+  const tabs = document.querySelectorAll('.tab-content');
+  tabs.forEach(tabContent => {
+    tabContent.style.display = 'none';
+  });
+
+  // Снять класс 'active' с всех кнопок вкладок
+  const buttons = document.querySelectorAll('.tab-button');
+  buttons.forEach(button => {
+    button.classList.remove('active');
+  });
+
+  // Показать выбранную вкладку
+  document.getElementById(tab + '-tab').style.display = 'block';
+  
+  // Установить класс 'active' на выбранную кнопку
+  document.getElementById('tab-' + tab).classList.add('active');
 }
 
-.container {
-  width: 80%;
-  margin: 0 auto;
+// Функция для подсчета итоговой стоимости на основе введенных значений
+function calculateTotal() {
+  let total = 0;
+
+  // Для всех услуг на странице
+  const rows = document.querySelectorAll('table tbody tr');
+  rows.forEach(row => {
+    const price = parseFloat(row.dataset.price);
+    const quantity = parseInt(row.querySelector('.quantity').value) || 0;
+    const totalPrice = price * quantity;
+    row.querySelector('.total-price').textContent = totalPrice;
+    total += totalPrice;
+  });
+
+  // Отображаем итоговую стоимость
+  document.getElementById('total-price').textContent = total;
 }
 
-h1 {
-  text-align: center;
-}
+// Вызов функции для подсчета стоимости при изменении количества
+document.querySelectorAll('.quantity').forEach(input => {
+  input.addEventListener('input', calculateTotal);
+});
 
-.tabs {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.tab-button {
-  background-color: #f2f2f2;
-  border: 1px solid #ddd;
-  padding: 10px 20px;
-  margin: 0 10px;
-  cursor: pointer;
-}
-
-.tab-button:hover {
-  background-color: #ddd;
-}
-
-.tab-button.active {
-  background-color: #ccc;
-}
-
-.tab-content {
-  display: none;
-}
-
-#fire-tab {
-  display: block;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-th, td {
-  padding: 10px;
-  text-align: center;
-  border: 1px solid #ddd;
-}
-
-th {
-  background-color: #f2f2f2;
-}
-
-td:first-child {
-  text-align: left; /* Выравнивание первой колонки по левому краю */
-}
-
-input {
-  width: 100%;
-  padding: 5px;
-  box-sizing: border-box;
-}
-
-.result {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 1.5em;
-}
-
-input[type="number"] {
-  text-align: center;
-}
+// Изначально показываем вкладку пожарной сигнализации
+showTab('fire');
